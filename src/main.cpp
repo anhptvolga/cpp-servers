@@ -1,20 +1,62 @@
 #include <iostream>
 
-#include <spdlog/spdlog.h>
-#include <spdlog/sinks/stdout_sinks.h>
+//#include <spdlog/spdlog.h>
+//#include <spdlog/sinks/stdout_sinks.h>
 
 #include <drogon/drogon.h>
 
 #include "PlainText.h"
+#include "demo_v1_User.h"
+
+void printInfo();
 
 int main() {
 
     drogon::app().addListener("0.0.0.0",80);
     //Load config file
     drogon::app().loadConfigFile("../src/config.json");
+
+
     //Run HTTP framework,the method will block in the internal event loop
     drogon::app()
 //    .registerHttpSimpleController("/", "PlainText")
-    .run();
+    .registerController(std::make_shared<User>());
+
+    printInfo();
+
+    drogon::app().run();
     return 0;
+}
+
+void printInfo() {
+    // Output information of all handlers
+    auto handlerInfo = app().getHandlersInfo();
+    for (auto &info : handlerInfo)
+    {
+        std::cout << std::get<0>(info);
+        switch (std::get<1>(info))
+        {
+            case Get:
+                std::cout << " (GET) ";
+                break;
+            case Post:
+                std::cout << " (POST) ";
+                break;
+            case Delete:
+                std::cout << " (DELETE) ";
+                break;
+            case Put:
+                std::cout << " (PUT) ";
+                break;
+            case Options:
+                std::cout << " (OPTIONS) ";
+                break;
+            case Head:
+                std::cout << " (Head) ";
+                break;
+            default:
+                break;
+        }
+        std::cout << std::get<2>(info) << std::endl;
+    }
 }
