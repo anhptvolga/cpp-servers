@@ -12,8 +12,9 @@ set(CMAKE_CXX_STANDARD 17)
 add_subdirectory(third-party/drogon)
 #find_package(drogon REQUIRED)
 
+add_subdirectory(src/drogon-sv)
 
-add_executable(cpp_servers src/main.cpp src/PlainText.h src/PlainText.cc src/demo_v1_User.h src/demo_v2_User.cc)
-target_include_directories(cpp_servers PRIVATE drogon)
-target_link_libraries(cpp_servers PRIVATE drogon)
+#add_executable(cpp_servers src/main.cpp src/PlainText.h src/PlainText.cc)
+#target_include_directories(cpp_servers PRIVATE  drogon)
+#target_link_libraries(cpp_servers PRIVATE  drogon)
 #add_dependencies(cpp_servers spdlog drogon)

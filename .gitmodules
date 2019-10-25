@@ -1,3 +1,9 @@
 [submodule "third-party/drogon"]
 	path = third-party/drogon
 	url = https://github.com/an-tao/drogon.git
+[submodule "third-party/restbed"]
+	path = third-party/restbed
+	url = https://github.com/Corvusoft/restbed.git
+[submodule "third-party/spdlog"]
+	path = third-party/spdlog
+	url = https://github.com/gabime/spdlog.git

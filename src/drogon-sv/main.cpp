@@ -1,12 +1,10 @@
 #include <iostream>
 
-//#include <spdlog/spdlog.h>
-//#include <spdlog/sinks/stdout_sinks.h>
-
 #include <drogon/drogon.h>
 
 #include "PlainText.h"
-#include "demo_v1_User.h"
+
+#include "ComplexController.h"
 
 void printInfo();
 
@@ -14,18 +12,20 @@ int main() {
 
     drogon::app().addListener("0.0.0.0",80);
     //Load config file
-    drogon::app().loadConfigFile("../src/config.json");
-
-
+    drogon::app().loadConfigFile("config.json");
     //Run HTTP framework,the method will block in the internal event loop
+
+    auto xx = std::make_shared<ComplexController>();
+
     drogon::app()
-//    .registerHttpSimpleController("/", "PlainText")
-    .registerController(std::make_shared<User>());
+    .registerController(xx)
+    .registerHttpSimpleController("/", "PlainText");
 
     printInfo();
 
     drogon::app().run();
     return 0;
+
 }
 
 void printInfo() {
