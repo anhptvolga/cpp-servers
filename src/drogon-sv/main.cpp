@@ -6,6 +6,8 @@
 #include <drogon/drogon.h>
 
 #include "PlainText.h"
+#include "ComplexController.h"
+
 
 int main() {
 
@@ -13,8 +15,13 @@ int main() {
     //Load config file
     drogon::app().loadConfigFile("../src/config.json");
     //Run HTTP framework,the method will block in the internal event loop
+
+    auto xx = std::make_shared<ComplexController>();
+
     drogon::app()
-//    .registerHttpSimpleController("/", "PlainText")
+    .registerController(xx)
+    .registerHttpSimpleController("/", "PlainText")
     .run();
     return 0;
+
 }

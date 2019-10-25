@@ -7,13 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 #include(cmake-modules/drogon.cmake)
 #include(cmake-modules/spdlog.cmake)
 
-add_subdirectory(third-party/spdlog)
 find_package(spdlog REQUIRED)
 add_subdirectory(third-party/drogon)
-#find_package(drogon REQUIRED)
 
-
-add_executable(cpp_servers src/main.cpp src/PlainText.h src/PlainText.cc)
-target_include_directories(cpp_servers PRIVATE spdlog::spdlog drogon)
-target_link_libraries(cpp_servers PRIVATE spdlog::spdlog drogon)
-#add_dependencies(cpp_servers spdlog drogon)
+add_subdirectory(src/drogon-sv)
