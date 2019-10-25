@@ -5,6 +5,7 @@
 #include "PlainText.h"
 
 #include "ComplexController.h"
+#include "demo_v1_User.h"
 
 void printInfo();
 
@@ -19,7 +20,8 @@ int main() {
 
     drogon::app()
     .registerController(xx)
-    .registerHttpSimpleController("/", "PlainText");
+    .registerHttpSimpleController("/", "PlainText")
+    .registerController(std::make_shared<User>());
 
     printInfo();
 
