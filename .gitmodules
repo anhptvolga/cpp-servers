@@ -7,3 +7,9 @@
 [submodule "third-party/spdlog"]
 	path = third-party/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule "third-party/mongo"]
+	path = third-party/mongo
+	url = https://github.com/mongodb/mongo-cxx-driver
+[submodule "third-party/mongoc"]
+	path = third-party/mongoc
+	url = https://github.com/mongodb/mongo-c-driver
