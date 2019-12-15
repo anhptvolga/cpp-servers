@@ -7,6 +7,8 @@
 #include "ComplexController.h"
 #include "demo_v1_User.h"
 
+#include <spdlog/spdlog.h>
+
 void printInfo();
 
 int main() {
@@ -24,6 +26,8 @@ int main() {
     .registerController(std::make_shared<User>());
 
     printInfo();
+
+    spdlog::set_pattern("[%H:%M:%S %z] [%n] [%^---%L---%$] [thread %t] %v");
 
     drogon::app().run();
     return 0;

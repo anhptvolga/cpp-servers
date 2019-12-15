@@ -13,3 +13,6 @@
 [submodule "third-party/mongoc"]
 	path = third-party/mongoc
 	url = https://github.com/mongodb/mongo-c-driver
+[submodule "third-party/tbb"]
+	path = third-party/tbb
+	url = https://github.com/intel/tbb.git
